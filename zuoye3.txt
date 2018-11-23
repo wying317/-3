@@ -1,0 +1,48 @@
+ create table movie(id int auto_increment primary key,name varchar(30), year int,director varchar(40),grade varchar(3));
+ insert into movie(id,name,year,director,grade)values(1,"I am not madame bovary",2018,"wenmuye",9.0),(2,"cry me a sad river",2018,"luoluo",5.8),(3,"a chinese odyssey",2017,"maxihai",6.3);
+
+select * from movie;
++----+------------------------+------+----------+-------+
+| id | name                   | year | director | grade |
++----+------------------------+------+----------+-------+
+|  1 | I am not madame bovary | 2018 | wenmuye  | 9.0   |
+|  2 | cry me a sad river     | 2018 | luoluo   | 5.8   |
+|  3 | a chinese odyssey      | 2017 | maxihai  | 6.3   |
++----+------------------------+------+----------+-------+
+3 rows in set (0.00 sec)
+
+ select * from movie where director like "%luo%";
++----+--------------------+------+----------+-------+
+| id | name               | year | director | grade |
++----+--------------------+------+----------+-------+
+|  2 | cry me a sad river | 2018 | luoluo   | 5.8   |
++----+--------------------+------+----------+-------+
+1 row in set (0.00 sec)
+
+
+ select * from movie where name like "%cry%";
++----+--------------------+------+----------+-------+
+| id | name               | year | director | grade |
++----+--------------------+------+----------+-------+
+|  2 | cry me a sad river | 2018 | luoluo   | 5.8   |
++----+--------------------+------+----------+-------+
+1 row in set (0.00 sec)
+
+select * from movie where year like "%17%";
++----+-------------------+------+----------+-------+
+| id | name              | year | director | grade |
++----+-------------------+------+----------+-------+
+|  3 | a chinese odyssey | 2017 | maxihai  | 6.3   |
++----+-------------------+------+----------+-------+
+1 row in set (0.00 sec)
+
+select * from movie where movie.grade in(select max(grade) from movie);
++----+------------------------+------+----------+-------+
+| id | name                   | year | director | grade |
++----+------------------------+------+----------+-------+
+|  1 | I am not madame bovary | 2018 | wenmuye  | 9.0   |
++----+------------------------+------+----------+-------+
+1 row in set (0.45 sec)
+
+
+
